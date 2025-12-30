@@ -45,15 +45,15 @@ const ActionButtons = () => {
 
   return (
     <div
-      className={`fixed right-24 bottom-40 flex flex-col space-y-20 z-50 transition-all duration-500 ${
+      className={`fixed right-6 bottom-28 flex flex-col space-y-4 z-40 transition-all duration-500 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       }`}
-      style={{ pointerEvents: isVisible ? 'auto' : 'none' }} // Disable clicks when invisible
+      style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
     >
       {/* WhatsApp Button */}
       <button
         onClick={openWhatsApp}
-        className="sticky-button group bg-green-500 hover:bg-green-600 focus:ring-green-500 hover:scale-110 transition-all duration-300 animate-pulse-subtle shadow-lg hover:shadow-green-400/50 p-4 rounded-full"
+        className="flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 group bg-green-500 hover:bg-green-600 focus:ring-green-500 hover:shadow-green-400/50"
         aria-label="Contact on WhatsApp"
       >
         <FaWhatsapp className="w-6 h-6 animate-float text-white" />
@@ -65,7 +65,7 @@ const ActionButtons = () => {
       {/* Call Button */}
       <button
         onClick={callClinic}
-        className="sticky-button group bg-clinic-primary hover:bg-clinic-accent focus:ring-clinic-primary hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-clinic-primary/50 p-4 rounded-full"
+        className="flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 group bg-clinic-primary hover:bg-clinic-accent focus:ring-clinic-primary hover:shadow-clinic-primary/50"
         aria-label="Call the clinic"
       >
         <Phone className="w-6 h-6 animate-float text-white" />

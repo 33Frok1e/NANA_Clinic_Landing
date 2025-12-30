@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import FacebookPixel from "./components/FacebookPixel";
 import SubmitPage from "./pages/SubmitPage";
 import HearingAidTrial from "./pages/HearingAidTrial";
+import ChatBot from "./components/ChatBot";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
       <FacebookPixel />
       <Toaster />
       <Sonner />
+      <ChatBot />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

@@ -13,6 +13,7 @@ type Message = {
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(true);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -25,7 +26,18 @@ const ChatBot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const toggleChat = () => setIsOpen(!isOpen);
+  const toggleChat = () => {
+    setIsOpen(!isOpen);
+    setShowTooltip(false); // Hide tooltip when chat opens
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTooltip(false);
+    }, 8000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -89,10 +101,22 @@ const ChatBot = () => {
 
   return (
     <>
+      {!isOpen && showTooltip && (
+        <div className="fixed bottom-24 right-4 z-50 animate-fade-in sm:right-6">
+          <div className="relative rounded-xl bg-white p-3 shadow-lg border border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+            <p className="text-sm font-medium text-gray-800 dark:text-gray-100 whitespace-nowrap">
+              👋 May I help you?
+            </p>
+            {/* Arrow/Triangle */}
+            <div className="absolute -bottom-2 right-6 h-4 w-4 rotate-45 border-b border-r border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800"></div>
+          </div>
+        </div>
+      )}
+
       <button
         onClick={toggleChat}
         className={cn(
-          "fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110",
+          "fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110 overflow-hidden",
           isOpen ? "bg-red-500 hover:bg-red-600" : "bg-clinic-primary hover:bg-clinic-accent"
         )}
         aria-label={isOpen ? "Close chat" : "Open chat"}
@@ -100,12 +124,12 @@ const ChatBot = () => {
         {isOpen ? (
           <X className="h-6 w-6 text-white" />
         ) : (
-          <MessageCircle className="h-7 w-7 text-white" />
+          <img src={femaleBot} className='h-full w-full object-cover' alt="Female Bot Image" />
         )}
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-[350px] overflow-hidden rounded-2xl bg-white shadow-2xl animate-fade-in border border-gray-100 flex flex-col h-[500px]">
+        <div className="fixed bottom-24 right-6 z-50 w-[350px] max-w-[calc(100vw-3rem)] overflow-hidden rounded-2xl bg-white shadow-2xl animate-fade-in border border-gray-100 flex flex-col h-[500px] max-h-[80vh]">
           {/* Header */}
           <div className="bg-clinic-primary p-4 flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 overflow-hidden">

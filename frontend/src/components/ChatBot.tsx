@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import femaleBot from '/images/bot_female_image.jpg';
 
 type Message = {
   id: string;
@@ -107,8 +108,9 @@ const ChatBot = () => {
         <div className="fixed bottom-24 right-6 z-50 w-[350px] overflow-hidden rounded-2xl bg-white shadow-2xl animate-fade-in border border-gray-100 flex flex-col h-[500px]">
           {/* Header */}
           <div className="bg-clinic-primary p-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
-              <Bot className="h-6 w-6 text-white" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 overflow-hidden">
+              {/* <Bot className="h-6 w-6 text-white" /> */}
+              <img src={femaleBot} className='h-full w-full object-cover' alt="Female Bot Image" />
             </div>
             <div>
               <h3 className="font-semibold text-white">NANA Assistant</h3>

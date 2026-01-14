@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { cn } from "@/lib/utils";
-import femaleBot from '/images/bot_female_image.jpg';
+import femaleBot from '/images/chatbot-profile-picture.jpeg';
 
 type Message = {
   id: string;

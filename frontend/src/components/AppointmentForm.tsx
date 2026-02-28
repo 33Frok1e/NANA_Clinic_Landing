@@ -11,11 +11,23 @@ const trackFormSubmission = () => {
     window.fbq('track', 'Lead');
     window.fbq('track', 'CompleteRegistration');
   }
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'generate_lead', {
+      'event_category': 'engagement',
+      'event_label': 'appointment_form'
+    });
+  }
 };
 
 const trackFormStarted = () => {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', 'StartTrial');
+  }
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'begin_checkout', {
+      'event_category': 'engagement',
+      'event_label': 'appointment_form_start'
+    });
   }
 };
 
@@ -23,6 +35,13 @@ const trackFormError = (errorMessage: string) => {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('trackCustom', 'FormError', {
       error: errorMessage
+    });
+  }
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'exception', {
+      'description': errorMessage,
+      'fatal': false,
+      'event_label': 'appointment_form_error'
     });
   }
 };

@@ -9,6 +9,8 @@ import FacebookPixel from "./components/FacebookPixel";
 import SubmitPage from "./pages/SubmitPage";
 import HearingAidTrial from "./pages/HearingAidTrial";
 import ChatBot from "./components/ChatBot";
+import BlogList from "./pages/BlogList";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/submitPage" element={<SubmitPage />} />
           <Route path="/hearingAidTrial" element={<HearingAidTrial />} />
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

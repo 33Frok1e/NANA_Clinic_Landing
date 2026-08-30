@@ -19,6 +19,7 @@ const Navbar = () => {
   const navItems = [
     { name: "Home", href: "/", type: "route" },
     { name: "Hearing Aid", href: "/hearingAidTrial", type: "route" },
+    { name: "Blog", href: "/blog", type: "route" },
     { name: "Services", href: "#services", type: "hash" },
     { name: "About", href: "#about", type: "hash" },
     { name: "Testimonials", href: "#testimonials", type: "hash" },
